@@ -14,10 +14,11 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Users from 'containers/Users';
 import GlobalStyle from '../../global-styles';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 
 export default function App() {
   return (
-    <div>
+    <div className="container">
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/users" component={Users} />
