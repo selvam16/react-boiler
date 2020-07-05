@@ -13,6 +13,19 @@ export function* loadUsers() {
   }
 }
 
+export function* loadUser({ payload }) {
+  try {
+    const response = yield call(
+      request,
+      `https://api.github.com/user/${payload}`,
+    );
+    yield put(actions.loadUserSuccess(response));
+  } catch (error) {
+    yield put(actions.loadUserError(error));
+  }
+}
+
 export default function* saga() {
   yield takeLatest(usersConst.LOAD_USERS, loadUsers);
+  yield takeLatest(usersConst.LOAD_USER, loadUser);
 }
