@@ -1,15 +1,14 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
-
 import PropTypes from 'prop-types';
-// import startCase from 'lodash/startCase';
 import './componet.css';
-// import { Panel } from 'primereact/panel';
+import { Panel } from 'primereact/panel';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
-// import history from '../../utils/history';
+import capitalize from 'lodash/capitalize';
+import startCase from 'lodash/startCase';
 
 const Users = ({ users, loadUsers }) => {
   const [layout, setLayout] = useState('list');
@@ -38,28 +37,21 @@ const Users = ({ users, loadUsers }) => {
     setSortField(sort_Field);
     setSortKey(sort_Key);
   };
-
-  // const navigateToUser = id => {
-  //   history.push(`/user/${id}`);
-  // };
+  const renderUserData = (key, value) => (
+    <div className="p-col-12">
+      {capitalize(startCase(key))}:{value}
+    </div>
+  );
   const renderListItem = user => (
     <div className="p-col-12">
       <div className="user-details">
         <div>
           <img src={user.avatar_url} alt={user.avatar_url} />
           <div className="p-grid">
-            <div className="p-col-12">
-              login: <b>{user.login}</b>
-            </div>
-            <div className="p-col-12">
-              type: <b>{user.type}</b>
-            </div>
-            <div className="p-col-12">
-              node_id: <b>{user.node_id}</b>
-            </div>
-            <div className="p-col-12">
-              avatar_url: <b>{user.avatar_url}</b>
-            </div>
+            {renderUserData('login', user.login)}
+            {renderUserData('type', user.type)}
+            {renderUserData('node_id', user.node_id)}
+            {renderUserData('avatar_url', user.avatar_url)}
           </div>
         </div>
         <Button
@@ -72,23 +64,23 @@ const Users = ({ users, loadUsers }) => {
       </div>
     </div>
   );
-  // const renderGridItem = user => (
-  //   <div style={{ padding: '.5em' }} className="p-col-12 p-md-3 Gridview">
-  //     <Panel header={user.login} style={{ textAlign: 'center' }}>
-  //       <img src={user.avatar_url} alt={user.avatar_url} />
-  //       <div className="user-detail">
-  //         {user.type} - {user.node_id}
-  //       </div>
-  //       <Button
-  //         icon="pi pi-search"
-  //         onClick={() => {
-  //           setSelectedUser(user);
-  //           setVisible(true);
-  //         }}
-  //       />
-  //     </Panel>
-  //   </div>
-  // );
+  const renderGridItem = user => (
+    <div style={{ padding: '.5em' }} className="p-col-12 p-md-3 Gridview">
+      <Panel header={user.login} style={{ textAlign: 'center' }}>
+        <img src={user.avatar_url} alt={user.avatar_url} />
+        <div className="user-detail">
+          {user.type} - {user.node_id}
+        </div>
+        <Button
+          icon="pi pi-search"
+          onClick={() => {
+            setSelectedUser(user);
+            setVisible(true);
+          }}
+        />
+      </Panel>
+    </div>
+  );
   const renderUserDialogContent = () => {
     if (selectedUser) {
       return (
@@ -99,18 +91,7 @@ const Users = ({ users, loadUsers }) => {
           <div className="p-col-12" style={{ textAlign: 'center' }}>
             <img src={selectedUser.avatar_url} alt={selectedUser.avatar_url} />
           </div>
-
-          <div className="p-col-4">Login: </div>
-          <div className="p-col-8">{selectedUser.login}</div>
-
-          <div className="p-col-4">Type: </div>
-          <div className="p-col-8">{selectedUser.type}</div>
-
-          <div className="p-col-4">Node_id: </div>
-          <div className="p-col-8">{selectedUser.node_id}</div>
-
-          <div className="p-col-4">avatar_url: </div>
-          <div className="p-col-8">{selectedUser.avatar_url}</div>
+          {renderUserData(selectedUser)}
         </div>
       );
     }
@@ -147,21 +128,24 @@ const Users = ({ users, loadUsers }) => {
   };
 
   const header = renderHeader();
-  // const itemTemplate = (user, layout) => {
-  //   if (!user) {
-  //     return;
-  //   }
+  // eslint-disable-next-line no-shadow
+  const itemTemplate = (user, layout) => {
+    if (!user) {
+      return;
+    }
 
-  //   if (layout === 'list') return renderListItem(user);
-  //   if (layout === 'grid') return renderGridItem(user);
-  // };
+    // eslint-disable-next-line consistent-return
+    if (layout === 'list') return renderListItem(user);
+    // eslint-disable-next-line consistent-return
+    if (layout === 'grid') return renderGridItem(user);
+  };
   return (
     <div className="dataview-demo">
       <DataView
         value={users}
         layout={layout}
         header={header}
-        itemTemplate={renderListItem}
+        itemTemplate={itemTemplate}
         paginatorPosition="both"
         paginator
         rows={20}

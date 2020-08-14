@@ -8,7 +8,10 @@
 .toggle-menu{
     display:inline-block;
     padding-top: 3px;
-} 
+}
+.is-active {
+    background-color: coral;
+}
 .list-main li .navbar-item{
     text-decoration: none;
     display: block;
@@ -16,9 +19,16 @@
     font-size: 16px; 
     color: #000000; 
     font-weight: 700;
+    background-color: rgb(148, 159, 160);
+    margin-top: 13px;
 }
-.list-main li .navbar-item i{
-padding-right: 10px;
+.list-main li .navbar-item:hover
+{
+    background-color: coral;
+}
+.list-main li .navbar-item:active
+{
+    background: gold;
 }
 .collapse-list-main{
     position: relative;

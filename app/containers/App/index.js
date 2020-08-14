@@ -29,6 +29,7 @@ export default function App() {
       <div className="container">
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/home" component={HomePage} />
           <Route exact path="/users" component={Users} />
           <Route exact path="/user/:id" component={UserDetails} />
           <Route component={NotFoundPage} />

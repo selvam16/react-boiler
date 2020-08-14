@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.css';
@@ -12,10 +13,10 @@ const SideNavMenu = forwardRef(({}, ref) => {
   const ToggleNavfunc = () => {
     settoggleSideNav(!toggleSideNav);
   };
-
   useImperativeHandle(ref, () => ({
     setToggleNav: ToggleNavfunc,
   }));
+  const items = ['Home', 'Users'];
 
   return (
     <div>
@@ -29,24 +30,20 @@ const SideNavMenu = forwardRef(({}, ref) => {
             className="nav flex-column list-main"
             onClick={() => settoggleSideNav(false)}
           >
-            <li className="nav-item">
-              <NavLink
-                className="navbar-item"
-                activeClassName="is-active"
-                to="/"
-              >
-                <i className="pi pi-home" /> Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className="navbar-item"
-                activeClassName="is-active"
-                to="/Users"
-              >
-                <i className="pi pi-users" /> Users
-              </NavLink>
-            </li>
+            {items.map(item => (
+              <li className="nav-item">
+                {
+                  <NavLink
+                    className="navbar-item"
+                    activeClassName="is-active"
+                    to={item.toLowerCase()}
+                  >
+                    <i className={`pi pi-${item.toLowerCase()}`} />
+                    {item}
+                  </NavLink>
+                }
+              </li>
+            ))}
           </ul>
           <div
             className="collapse-button"

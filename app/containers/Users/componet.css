@@ -68,22 +68,19 @@ body {
 .dataview-demo .user-details > div img {
   margin-right: 14px;
   margin:left;height: 120px;
+  width:13%;
 }
 .Gridview > Panel > img {
   margin-right: 14px;
   margin:left;height: 120px;
 } 
-
 .dataview-demo .user-detail {
   padding: 0 1em 1em 1em;
   border-bottom: 1px solid #d9dad9;
   margin: 1em;
-  margin:left;height: 120px;
-
 }
 .dataview-demo .p-panel-content {
-  padding: 1em;
-  
+  padding: 1em;  
 }
 @media screen and (max-width: 1024px) {
   .dataview-demo .p-dataview .user-details img {
