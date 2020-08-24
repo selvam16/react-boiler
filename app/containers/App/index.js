@@ -21,14 +21,12 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
 export default function App() {
   const [togglesidenav, settogglesidenav] = useState(false);
   const ref = useRef(null);
-
   return (
     <BrowserRouter>
       <Headernav onBurgerClick={() => ref.current.setToggleNav()} />
       <SideNavMenu ref={ref} />
-      <div className="container">
+      <div className="container sidemenubar">
         <Switch>
-          <Route exact path="/" component={HomePage} />
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/users" component={Users} />
           <Route exact path="/user/:id" component={UserDetails} />

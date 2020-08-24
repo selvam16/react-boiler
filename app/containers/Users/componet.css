@@ -1,4 +1,4 @@
-.card{
+.card {
   padding: 10px;
 }
 
@@ -10,21 +10,21 @@
   width: 18rem;
 }
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 40%;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .container {
   padding: 2px 16px;
 }
 body {
-  padding: .5em;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 0.5em;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: normal;
   color: #333333;
   -webkit-font-smoothing: antialiased;
@@ -49,7 +49,7 @@ body {
     display: none;
   }
   .p-col-m {
-      display: inline-block;
+    display: inline-block;
   }
 }
 
@@ -63,42 +63,46 @@ body {
 .dataview-demo .user-details > div {
   display: flex;
   align-items: center;
-  }
+}
 
 .dataview-demo .user-details > div img {
   margin-right: 14px;
-  margin:left;height: 120px;
-  width:13%;
+  margin: left;
+  height: 120px;
+  width: 13%;
 }
 .Gridview > Panel > img {
   margin-right: 14px;
-  margin:left;height: 120px;
-} 
+  margin: left;
+  height: 120px;
+}
 .dataview-demo .user-detail {
   padding: 0 1em 1em 1em;
   border-bottom: 1px solid #d9dad9;
   margin: 1em;
 }
 .dataview-demo .p-panel-content {
-  padding: 1em;  
+  padding: 1em;
 }
 @media screen and (max-width: 1024px) {
   .dataview-demo .p-dataview .user-details img {
-      width: 50px;
-      margin:auto;height:120px;
+    width: 50px;
+    margin: auto;
+    height: 120px;
   }
 }
 @media screen and (max-width: 640px) {
-  .dataview-demo .user-details, .dataview-demo .search-icon {
-      text-align: center;
-      margin-top: 0;
+  .dataview-demo .user-details,
+  .dataview-demo .search-icon {
+    text-align: center;
+    margin-top: 0;
   }
 
   .dataview-demo .filter-container {
-      text-align: left;
+    text-align: left;
   }
 
   .datascroll-demo .user-item {
-      text-align: center;
+    text-align: center;
   }
 }

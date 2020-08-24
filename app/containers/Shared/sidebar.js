@@ -17,21 +17,22 @@ const SideNavMenu = forwardRef(({}, ref) => {
     setToggleNav: ToggleNavfunc,
   }));
   const items = ['Home', 'Users'];
-
+  if (toggleSideNav) {
+    document.getElementsByClassName('p-sidebar-close')[0].style.display =
+      'none';
+  }
   return (
     <div>
       <Sidebar
         visible={toggleSideNav}
         baseZIndex={1000000}
         onHide={() => settoggleSideNav(false)}
+        modal={false}
       >
         <div className="collapse-list-main">
-          <ul
-            className="nav flex-column list-main"
-            onClick={() => settoggleSideNav(false)}
-          >
+          <ul className="nav flex-column list-main">
             {items.map(item => (
-              <li className="nav-item">
+              <li className="nav-item" key={`${item}-id`}>
                 {
                   <NavLink
                     className="navbar-item"
@@ -39,7 +40,7 @@ const SideNavMenu = forwardRef(({}, ref) => {
                     to={item.toLowerCase()}
                   >
                     <i className={`pi pi-${item.toLowerCase()}`} />
-                    {item}
+                    <span className="navmenu">{item}</span>
                   </NavLink>
                 }
               </li>

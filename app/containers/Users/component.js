@@ -67,7 +67,12 @@ const Users = ({ users, loadUsers }) => {
   const renderGridItem = user => (
     <div style={{ padding: '.5em' }} className="p-col-12 p-md-3 Gridview">
       <Panel header={user.login} style={{ textAlign: 'center' }}>
-        <img src={user.avatar_url} alt={user.avatar_url} />
+        <img
+          width="80"
+          height="120"
+          src={user.avatar_url}
+          alt={user.avatar_url}
+        />
         <div className="user-detail">
           {user.type} - {user.node_id}
         </div>
@@ -91,7 +96,12 @@ const Users = ({ users, loadUsers }) => {
           <div className="p-col-12" style={{ textAlign: 'center' }}>
             <img src={selectedUser.avatar_url} alt={selectedUser.avatar_url} />
           </div>
-          {renderUserData(selectedUser)}
+          <div style={{ margin: 'auto', textAlign: 'left' }}>
+            {renderUserData('login', selectedUser.login)}
+            {renderUserData('type', selectedUser.type)}
+            {renderUserData('node_id', selectedUser.node_id)}
+            {renderUserData('avatar_url', selectedUser.avatar_url)}
+          </div>
         </div>
       );
     }
@@ -108,15 +118,6 @@ const Users = ({ users, loadUsers }) => {
 
     return (
       <div className="p-grid">
-        <div className="p-col-6" style={{ textAlign: 'left' }}>
-          <Dropdown
-            options={sortOptions}
-            value={sortKey}
-            placeholder="Sort By"
-            onChange={onSortChange}
-            style={{ width: '12em' }}
-          />
-        </div>
         <div className="p-col-6" style={{ textAlign: 'right' }}>
           <DataViewLayoutOptions
             layout={layout}
@@ -126,7 +127,6 @@ const Users = ({ users, loadUsers }) => {
       </div>
     );
   };
-
   const header = renderHeader();
   // eslint-disable-next-line no-shadow
   const itemTemplate = (user, layout) => {
@@ -146,9 +146,6 @@ const Users = ({ users, loadUsers }) => {
         layout={layout}
         header={header}
         itemTemplate={itemTemplate}
-        paginatorPosition="both"
-        paginator
-        rows={20}
         sortOrder={sortOrder}
         sortField={sortField}
       />
