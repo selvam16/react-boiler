@@ -1,0 +1,54 @@
+.p-sidebar {
+  top: auto !important;
+}
+.heading {
+  margin-left: 10px;
+  display: inline-block;
+}
+.toggle-menu {
+  display: inline-block;
+  padding-top: 3px;
+}
+.is-active {
+  background-color: coral;
+}
+.list-main li .navbar-item {
+  text-decoration: none;
+  display: block;
+  padding: 5px 0px;
+  font-size: 16px;
+  color: #000000;
+  font-weight: 700;
+  margin-top: 13px;
+  border-bottom: 1px solid #ccc;
+}
+.list-main li .navbar-item:hover {
+  background-color: coral;
+}
+.list-main li .navbar-item:active {
+  background: gold;
+}
+.navmenu {
+  margin-left: 3px;
+}
+.collapse-list-main {
+  position: relative;
+  height: 100vh;
+}
+.collapse-button {
+  position: absolute;
+  bottom: 80px;
+  left: 0px;
+  right: 0px;
+  padding: 8px 0px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sidemenubar {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.15s !important;
+  padding: 0 20px !important;
+  margin-left: 260px !important;
+}
